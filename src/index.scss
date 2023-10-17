@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box; 
+}
+
+$color-default: rgba(183, 35, 255, 1);
+$color-orange: rgba(249, 125, 27, 1);
+$color-font-light: rgba(255, 255, 255, 1);
+$color-font-dark: rgba(255, 255, 255, .5);
+$color-background: rgba(12, 12, 12, 1);
+$color-background-component: rgba(0, 0, 0, 1);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: $color-background;
+}

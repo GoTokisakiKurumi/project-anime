@@ -1,0 +1,197 @@
+@use '../../../index' as root;
+@use '../../../assets/flexbox';
+@use '../../../assets/breakpoint';
+
+.container.hero-section {
+  width: 100%;
+  margin: 25px 0;
+  padding: 0 1em;
+}
+
+.wrapper.hero-main {
+  position: relative;
+  padding: .5em;
+  border-radius: 3px;
+  background: root.$color-background-component;
+
+  img {
+    display: block;
+    min-width: 100%;
+    max-height: 230px;
+    margin: 0 auto;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  .hangup {
+    position: absolute;
+    @include flexbox.simple(center, space-between);
+    width: calc(100% - 16px);
+    padding: .5em;
+
+    span {
+      display: block;
+      color: root.$color-font-light;
+      padding: .5em .8em;
+      font-size: .8em;
+      border-radius: 3px;
+      background: root.$color-background;
+    }
+
+    span:first-child {
+      background: root.$color-orange;
+    }
+  }
+
+  .title {
+    position: absolute;
+    right: 1em;
+    left: 1em;
+    bottom: 1em;
+    display: block;
+
+    h1 {
+      color: root.$color-font-light;
+      font-size: 1.1em;
+    }
+  }
+
+  #shadow {
+    position: absolute;
+    left: 1px;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 7em;
+    background: linear-gradient(0deg, rgba(0,0,0,1) 1%, rgba(255,255,255,0) 100%);
+  }
+}
+
+.wrapper.hero-child {
+  display: grid;
+  gap: .6em;
+  grid-template-columns: repeat(auto-fit, 159px);
+  place-items: center center;
+  width: 100%;
+  margin: 20px 0;
+
+  .card {
+    position: relative;
+    padding: .4em;
+    border-radius: 3px;
+    background: root.$color-background-component;
+   
+    &:hover #playButton,
+    &:active #playButton {
+      display: block;    
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 8 / 12;
+      border-radius: 3px;
+    }
+
+    #playButton {
+      z-index: 1;
+      position: absolute;
+      top: 6.7px;
+      left: 50%;
+      transform: translate(-50%, 0);
+
+      display: none;
+      width: calc(100% - .8rem);
+      height: calc(100% - 4.3rem);
+      border-radius: 3px;
+      background: rgba(183, 35, 255, .5);
+
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: root.$color-font-light;
+        font-size: 3em;
+        transform: translate(-50%, -50%);
+        display: block;
+      }
+    }
+    
+    .title {
+      margin: .5em 0;
+
+      h1 {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        color: root.$color-font-light;
+        font-size: .8em;
+      }
+
+      .hangup {
+        position: absolute;
+        top: 0;
+        @include flexbox.simple(center, space-between);
+        width: calc(100% - 13px);
+        padding: .6em .2em;
+
+        span {
+          display: block;
+          color: root.$color-font-light;
+          padding: .3em .5em;
+          font-size: .8em;
+          border-radius: 3px;
+          background: root.$color-background;
+        }
+
+        span:first-child {
+          background: root.$color-orange;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint.tablet {
+  .container.hero-section {
+    position: relative;
+    display: grid;
+    gap: .5em;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .wrapper.hero-main {
+    img {
+      max-height: 450px;
+    }
+
+    .hangup,
+    .title {
+      font-size: 1.5em;
+    }
+  }
+
+  .wrapper.hero-child {
+    grid-template-columns: repeat(auto-fit, 151px) !important;
+    justify-content: end;
+    overflow: auto;
+    margin: 0 !important;
+    max-height: 465.8px;
+  
+    &::-webkit-scrollbar {
+      width: 1.5px;    }
+
+    &::-webkit-scrollbar-thumb {
+      background: root.$color-font-light;    
+    }
+    &::-webkit-scrollbar-track {
+      background: root.$color-default;
+    }
+
+    .card {
+      max-width: 150px !important;
+    }
+  }
+}

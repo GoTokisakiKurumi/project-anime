@@ -1,0 +1,23 @@
+@use '../../../index' as root;
+@use '../../../assets/flexbox';
+@use '../../../assets/breakpoint';
+
+.container.navbar-section {
+  .wrapper.nav {
+    ul {
+      @include flexbox.simple(center, center);
+      gap: 0 1.6em;
+      font-size: .9em;
+      text-transform: capitalize;
+    }
+
+    li a {
+      color: root.$color-font-dark;
+      transition: color .3s ease-in;
+
+      &:hover {
+        color: root.$color-font-light;
+      }
+    }
+  }
+}
